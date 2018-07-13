@@ -28,13 +28,14 @@ public class Port : MonoBehaviour
     {
         if (line == null || connection == null) return;
 
+        Vector3 zOffset = new Vector3(0, 0, 0.1f);
         Vector3 initialOffset = new Vector3(1, 0, 0);
 
         if (connection.transform.position.x < transform.position.x) initialOffset *= -1;
 
-        line.SetPosition(0, transform.position);
-        line.SetPosition(1, transform.position + initialOffset);
-        line.SetPosition(2, connection.transform.position - initialOffset);
-        line.SetPosition(3, connection.transform.position);
+        line.SetPosition(0, transform.position + zOffset);
+        line.SetPosition(1, transform.position + initialOffset + zOffset);
+        line.SetPosition(2, connection.transform.position - initialOffset + zOffset);
+        line.SetPosition(3, connection.transform.position + zOffset);
     }
 }

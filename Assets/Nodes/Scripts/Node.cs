@@ -19,7 +19,7 @@ public class Node : MonoBehaviour
 
     public float fieldSpacing;
 
-    public void Start()
+    private void Start()
     {
         GetComponentInChildren<TextMeshPro>().text = name;
 

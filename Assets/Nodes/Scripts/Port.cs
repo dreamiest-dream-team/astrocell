@@ -30,6 +30,8 @@ public class Port : MonoBehaviour
 
         Vector3 initialOffset = new Vector3(1, 0, 0);
 
+        if (connection.transform.position.x < transform.position.x) initialOffset *= -1;
+
         line.SetPosition(0, transform.position);
         line.SetPosition(1, transform.position + initialOffset);
         line.SetPosition(2, connection.transform.position - initialOffset);

@@ -28,7 +28,10 @@ public class Node : MonoBehaviour
             GameObject go = Instantiate(inputFieldPrefab);
             go.transform.parent = fieldParent;
             go.transform.localPosition = new Vector3(0, fieldSpacing * i, 0);
-            go.GetComponentInChildren<TextMeshPro>().text = inputs[i].name + " (" + inputs[i].type + ")";
+            string t = " (" + inputs[i].type + ")";
+            if (t == " ()") t = "";
+            go.GetComponentInChildren<TextMeshPro>().text = inputs[i].name + t;
+            go.GetComponentInChildren<Port>().type = inputs[i].type;
         }
 
         for (int i = 0; i < outputs.Length; i++)
@@ -37,6 +40,7 @@ public class Node : MonoBehaviour
             go.transform.parent = fieldParent;
             go.transform.localPosition = new Vector3(0, fieldSpacing * i, 0);
             go.GetComponentInChildren<TextMeshPro>().text = "(" + outputs[i].type + ") " + outputs[i].name;
+            go.GetComponentInChildren<Port>().type = outputs[i].type;
         }
     }
 }

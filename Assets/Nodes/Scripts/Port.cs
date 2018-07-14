@@ -6,6 +6,8 @@ public class Port : MonoBehaviour
 {
     [HideInInspector]
     public Port connection;
+    [HideInInspector]
+    public string type;
 
     private LineRenderer line;
     private ConnectionManager manager;

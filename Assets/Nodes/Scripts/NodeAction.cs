@@ -126,6 +126,8 @@ public class NodeAction : MonoBehaviour
     {
         if (port != null && port.connection != null)
         {
+            StartCoroutine(SendPulseAnimation(port));
+
             yield return new WaitForSeconds(2);
 
             for (int i = 0; i < sending.Length; i++)
@@ -133,6 +135,37 @@ public class NodeAction : MonoBehaviour
                 port.connection.GetComponentInParent<NodeAction>().RecieveItem(sending[i]);
             }
         }
+    }
+
+    IEnumerator SendPulseAnimation(Port port)
+    {
+        LineRenderer lr = port.transform.parent.GetComponentInChildren<LineRenderer>();
+
+        Vector3[] positions = { lr.GetPosition(0), lr.GetPosition(1), lr.GetPosition(2), lr.GetPosition(3) };
+
+        float lengthOfConnection = 0;
+
+        lengthOfConnection += Vector3.Distance(positions[0], positions[1]);
+        lengthOfConnection += Vector3.Distance(positions[1], positions[2]);
+        lengthOfConnection += Vector3.Distance(positions[2], positions[3]);
+
+        float ups = lengthOfConnection / 2; //units per second
+
+        Transform pulse = lr.transform.GetChild(0);
+
+        pulse.position = positions[0];
+        pulse.gameObject.SetActive(true);
+
+        int point = 1;
+
+        while (point < 4)
+        {
+            pulse.position = Vector3.MoveTowards(pulse.position, positions[point], ups * Time.deltaTime);
+            if (pulse.position == positions[point]) point++;
+            yield return null;
+        }
+
+        pulse.gameObject.SetActive(false);
     }
 }
 

@@ -122,7 +122,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -152,12 +152,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 33925338333172488, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 33146188950460300, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 33146188950460300, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 33925338333172488, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: m_Mesh
       value: 
@@ -189,7 +189,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1460997283
+--- !u!1001 &285010924
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -198,12 +198,12 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: inputs.Array.size
-      value: 2
+      propertyPath: outputs.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -233,10 +233,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 33146188950460300, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 33925338333172488, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1786798138420732, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
+      propertyPath: m_Name
+      value: Exhale
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114558124500930864, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
@@ -248,29 +267,15 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1786798138420732, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
-      propertyPath: m_Name
-      value: Gas Pressurizer
-      objectReference: {fileID: 0}
     - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: name
-      value: GAS PRESSURIZER
+      value: Exhale
       objectReference: {fileID: 0}
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114004625321208192, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: inputs.Array.data[1].name
-      value: V2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
-        type: 2}
-      propertyPath: inputs.Array.data[1].type
-      value: GAS
-      objectReference: {fileID: 0}
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
-        type: 2}
-      propertyPath: outputs.Array.data[0].type
-      value: GAS
+      propertyPath: type
+      value: exhaler
       objectReference: {fileID: 0}
     - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
@@ -282,39 +287,34 @@ Prefab:
       propertyPath: inputs.Array.data[0].type
       value: GAS
       objectReference: {fileID: 0}
-    - target: {fileID: 33146188950460300, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: outputs.Array.data[0].name
+      value: INHALED
       objectReference: {fileID: 0}
-    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114004625321208192, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
-        type: 2}
-      propertyPath: type
-      value: pressurizer_gas
+      propertyPath: outputs.Array.data[0].type
+      value: GAS
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1609031700
+--- !u!1001 &1460997283
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: inputs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -344,10 +344,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 33146188950460300, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 33925338333172488, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1786798138420732, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
+      propertyPath: m_Name
+      value: Import Energy
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114558124500930864, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
@@ -359,13 +378,30 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1786798138420732, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
-      propertyPath: m_Name
-      value: Infuser
+    - target: {fileID: 114004625321208192, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: type
+      value: import_energy
       objectReference: {fileID: 0}
-    - target: {fileID: 1786798138420732, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: name
+      value: Import
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: inputs.Array.data[0].name
+      value: ENERGY
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: outputs.Array.data[0].name
+      value: ENERGY
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: outputs.Array.data[0].type
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
@@ -412,7 +448,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

@@ -18,6 +18,7 @@ public class Node : MonoBehaviour
     [Space]
 
     public float fieldSpacing;
+    public float fieldOffset;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class Node : MonoBehaviour
         {
             GameObject go = Instantiate(inputFieldPrefab);
             go.transform.parent = fieldParent;
-            go.transform.localPosition = new Vector3(0, fieldSpacing * i, 0);
+            go.transform.localPosition = new Vector3(0, fieldSpacing * i - fieldOffset, 0);
             string t = " (" + inputs[i].type + ")";
             if (t == " ()") t = "";
             go.GetComponentInChildren<TextMeshPro>().text = inputs[i].name + t;
@@ -38,8 +39,10 @@ public class Node : MonoBehaviour
         {
             GameObject go = Instantiate(outputFieldPrefab);
             go.transform.parent = fieldParent;
-            go.transform.localPosition = new Vector3(0, fieldSpacing * i, 0);
-            go.GetComponentInChildren<TextMeshPro>().text = "(" + outputs[i].type + ") " + outputs[i].name;
+            go.transform.localPosition = new Vector3(0, fieldSpacing * i - fieldOffset, 0);
+            string t = "(" + outputs[i].type + ") ";
+            if (t == "() ") t = "";
+            go.GetComponentInChildren<TextMeshPro>().text = t + outputs[i].name;
             go.GetComponentInChildren<Port>().type = outputs[i].type;
         }
     }

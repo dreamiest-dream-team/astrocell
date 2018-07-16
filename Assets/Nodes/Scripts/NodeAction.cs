@@ -33,9 +33,15 @@ public class NodeAction : MonoBehaviour
         switch (type)
         {
             case "inhaler":
-                if (!inProgress) // && HasItem("") >= 10
+                if (!inProgress && HasItem("") >= 10) 
                 {
-                    //RemoveItems("", 10);
+                    RemoveItems("", 10);
+                    StartCoroutine(StartExecutionWait());
+                }
+                break;
+            case "import_energy":
+                if (!inProgress)
+                {
                     StartCoroutine(StartExecutionWait());
                 }
                 break;
@@ -58,13 +64,20 @@ public class NodeAction : MonoBehaviour
     {
         int n = 0;
 
+        Item[] remove = new Item[num];
+
         foreach (Item item in items)
         {
             if (item.type == type && n < num)
             {
+                remove[n] = item;
                 n++;
-                items.Remove(item);
             }
+        }
+
+        foreach (Item i in remove)
+        {
+            items.Remove(i);
         }
     }
 
@@ -80,6 +93,9 @@ public class NodeAction : MonoBehaviour
             case "inhaler":
                 maxElapsed = 5;
                 break;
+            case "import_energy":
+                maxElapsed = 5;
+                break;
         }
 
         while (elapsed < maxElapsed)
@@ -92,33 +108,45 @@ public class NodeAction : MonoBehaviour
         progressText.text = "Waiting...";
         ExecuteTask();
 
+        yield return new WaitForSeconds(1);
+
         inProgress = false;
     }
 
     private void ExecuteTask()
     {
+        List<Item> sending = new List<Item>();
+
         switch (type)
         {
             case "inhaler":
-                string[] atmosphere = { "oxygen", "oxygen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "carbon dioxide" };
-                int sendAmount = 4;
-                Item[] sending = new Item[sendAmount];
-                for (int i = 0; i < sendAmount; i++)
+                string[] atmosphere = { "oxygen", "oxygen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "nitrogen", "carbon dioxide", "water", "argon" };
+                for (int i = 0; i < 4; i++)
                 {
                     Item item = new Item();
                     item.type = "GAS";
                     item.name = atmosphere[Random.Range(0, atmosphere.Length)];
-                    sending[i] = item;
-                }
-                Port[] ports = GetComponentsInChildren<Port>();
-                foreach (Port p in ports)
-                {
-                    if (p.transform.parent.GetComponentInChildren<LineRenderer>() != null)
-                    {
-                        StartCoroutine(Send(sending, p));
-                    }
+                    sending.Add(item);
                 }
                 break;
+            case "import_energy":
+                for (int i = 0; i < 3; i++)
+                {
+                    Item item = new Item();
+                    item.type = "";
+                    item.name = "energy";
+                    sending.Add(item);
+                }
+                break;
+        }
+
+        Port[] ports = GetComponentsInChildren<Port>();
+        foreach (Port p in ports)
+        {
+            if (p.transform.parent.GetComponentInChildren<LineRenderer>() != null)
+            {
+                StartCoroutine(Send(sending.ToArray(), p));
+            }
         }
     }
 

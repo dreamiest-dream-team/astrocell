@@ -53,25 +53,24 @@ public class Node : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && mouseOver)
+        if (dragging)
         {
-            if (dragging)
-            {
-                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                pos.z = transform.position.z;
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pos.z = transform.position.z;
 
-                transform.position = pos + dragOffset;
-            }
-            else
-            {
-                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                pos.z = 0;
-
-                dragging = true;
-                dragOffset = transform.position - pos;
-            }
+            transform.position = pos + dragOffset;
         }
-        else
+
+        if (Input.GetMouseButtonDown(0) && mouseOver)
+        {
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pos.z = 0;
+
+            dragging = true;
+            dragOffset = transform.position - pos;
+        }
+        
+        if (Input.GetMouseButtonUp(0))
         {
             dragging = false;
         }

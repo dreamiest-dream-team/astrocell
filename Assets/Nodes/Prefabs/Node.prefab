@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23601604564425322}
   - component: {fileID: 222594178645232268}
   - component: {fileID: 114558124500930864}
+  - component: {fileID: 114291615574188700}
   m_Layer: 0
   m_Name: Progress
   m_TagString: Untagged
@@ -42,6 +43,7 @@ GameObject:
   - component: {fileID: 23681767644626922}
   - component: {fileID: 222193702142110284}
   - component: {fileID: 114850684681673430}
+  - component: {fileID: 114483537524213874}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -90,6 +92,7 @@ GameObject:
   - component: {fileID: 4071786976410156}
   - component: {fileID: 114269827269519942}
   - component: {fileID: 114004625321208192}
+  - component: {fileID: 61647559667103794}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -104,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1786798138420732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4611402487245102}
@@ -224,6 +227,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489308460767090}
   m_Mesh: {fileID: 0}
+--- !u!61 &61647559667103794
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786798138420732}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -5.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9, y: 9}
+  m_EdgeRadius: 0
 --- !u!114 &114004625321208192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +291,30 @@ MonoBehaviour:
   fieldParent: {fileID: 4205918367801302}
   fieldSpacing: -1.5
   fieldOffset: -0.9
+--- !u!114 &114291615574188700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489308460767090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0654b4362f086f479ee0e91ba6bbebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOver: 0
+--- !u!114 &114483537524213874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556961220208224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0654b4362f086f479ee0e91ba6bbebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOver: 0
 --- !u!114 &114558124500930864
 MonoBehaviour:
   m_ObjectHideFlags: 1

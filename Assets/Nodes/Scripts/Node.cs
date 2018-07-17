@@ -20,6 +20,10 @@ public class Node : MonoBehaviour
     public float fieldSpacing;
     public float fieldOffset;
 
+    private bool mouseOver;
+    private bool dragging;
+    private Vector3 dragOffset;
+
     private void Start()
     {
         GetComponentInChildren<TextMeshPro>().text = name;
@@ -45,5 +49,41 @@ public class Node : MonoBehaviour
             go.GetComponentInChildren<TextMeshPro>().text = t + outputs[i].name;
             go.GetComponentInChildren<Port>().type = outputs[i].type;
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0) && mouseOver)
+        {
+            if (dragging)
+            {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                pos.z = transform.position.z;
+
+                transform.position = pos + dragOffset;
+            }
+            else
+            {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                pos.z = 0;
+
+                dragging = true;
+                dragOffset = transform.position - pos;
+            }
+        }
+        else
+        {
+            dragging = false;
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        mouseOver = true;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseOver = false;
     }
 }

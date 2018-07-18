@@ -160,7 +160,11 @@ public class NodeAction : MonoBehaviour
 
             for (int i = 0; i < sending.Length; i++)
             {
-                port.connection.GetComponentInParent<NodeAction>().RecieveItem(sending[i]);
+                Port p = port.connection;
+                    
+                if (p != null) {
+                    p.GetComponentInParent<NodeAction>().RecieveItem(sending[i]);
+                } 
             }
         }
     }
@@ -184,7 +188,10 @@ public class NodeAction : MonoBehaviour
         pulse.position = positions[0];
         pulse.gameObject.SetActive(true);
 
+        Port origConnection = port.connection;
+
         int point = 1;
+        float elapsed = 0;
 
         while (point < 4)
         {
@@ -192,6 +199,21 @@ public class NodeAction : MonoBehaviour
 
             pulse.position = Vector3.MoveTowards(pulse.position, positions[point] - _offset, ups * Time.deltaTime);
             if (pulse.position == positions[point] - _offset) point++;
+
+            if (origConnection != port.connection)
+            {
+                point = 4;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (positions[i] - _offset != lr.GetPosition(i))
+                {
+                    point = 4;
+                }
+            }
+
+            elapsed += Time.deltaTime;
             yield return null;
         }
 

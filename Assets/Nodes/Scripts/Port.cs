@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Port : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public Port connection;
     [HideInInspector]
     public string type;
@@ -28,7 +28,18 @@ public class Port : MonoBehaviour
 
     private void Update()
     {
-        if (line == null || connection == null) return;
+        if (line == null)
+            return;
+
+        if (connection == null)
+        {
+            line.enabled = false;
+            return;
+        }
+        else
+        {
+            line.enabled = true;
+        }
 
         Vector3 zOffset = new Vector3(0, 0, 0.1f);
         Vector3 initialOffset = new Vector3(1, 0, 0);

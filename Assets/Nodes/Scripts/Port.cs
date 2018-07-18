@@ -11,11 +11,13 @@ public class Port : MonoBehaviour
 
     private LineRenderer line;
     private ConnectionManager manager;
+    private SpriteRenderer rend;
 
     private void Start()
     {
         line = transform.parent.GetComponentInChildren<LineRenderer>();
         manager = FindObjectOfType<ConnectionManager>();
+        rend = GetComponent<SpriteRenderer>();
     }
 
     private void OnMouseOver()
@@ -28,6 +30,15 @@ public class Port : MonoBehaviour
 
     private void Update()
     {
+        if (connection == null)
+        {
+            rend.color = new Color(0.4431027f, 0.4316038f, 0.5f, 0.2039216f);
+        }
+        else
+        {
+            rend.color = new Color(0.4431027f, 0.4316038f, 0.5f, 1);
+        }
+
         if (line == null)
             return;
 

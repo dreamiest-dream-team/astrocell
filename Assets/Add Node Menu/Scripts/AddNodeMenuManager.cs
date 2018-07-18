@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class AddNodeMenuManager : MonoBehaviour
+public class AddNodeMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject entryPrefab;
     public Transform entries;
@@ -16,6 +16,17 @@ public class AddNodeMenuManager : MonoBehaviour
     public Vector3 menuMouseOffset;
 
     private Transform curEntry;
+    private bool over;
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        over = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        over = false;
+    }
 
     private void Update()
     {
@@ -26,7 +37,7 @@ public class AddNodeMenuManager : MonoBehaviour
             OpenMenu();
         }
 
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetMouseButtonDown(0) && !over)
         {
             CloseMenu();
         }

@@ -184,7 +184,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -640,7 +640,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -781,14 +781,9 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1238739955}
     m_Modifications:
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
-        type: 2}
-      propertyPath: inputs.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -818,12 +813,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 33925338333172488, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 33146188950460300, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 33146188950460300, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 33925338333172488, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: m_Mesh
       value: 
@@ -832,16 +827,6 @@ Prefab:
       propertyPath: m_Name
       value: Inhale
       objectReference: {fileID: 0}
-    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114558124500930864, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -852,30 +837,35 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: name
-      value: Inhale
+      propertyPath: m_havePropertiesChanged
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114004625321208192, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: type
-      value: inhaler
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: inputs.Array.data[0].name
-      value: ENERGY
+      propertyPath: m_fontColor.r
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: outputs.Array.data[0].name
-      value: V1
+      propertyPath: m_fontColor.g
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114269827269519942, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
         type: 2}
-      propertyPath: outputs.Array.data[0].type
-      value: GAS
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850684681673430, guid: 0bb08d6de21e7de40bb026a2fc5923c4,
+        type: 2}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
@@ -894,7 +884,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1000,7 +990,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4071786976410156, guid: 0bb08d6de21e7de40bb026a2fc5923c4, type: 2}
       propertyPath: m_LocalPosition.y

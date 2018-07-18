@@ -104,8 +104,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1786798138420732}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4611402487245102}
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  type: import_energy
+  type: inhaler
   progressText: {fileID: 114558124500930864}
 --- !u!114 &114269827269519942
 MonoBehaviour:
@@ -275,11 +275,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369a469500b2e444d849ffa38632fdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Import
-  inputs: []
-  outputs:
+  name: Inhale
+  inputs:
   - name: ENERGY
     type: 
+  outputs:
+  - name: V1
+    type: GAS
   inputFieldPrefab: {fileID: 1221108245263408, guid: 9e5313c117b7a6e4abe592ae610421cc,
     type: 2}
   outputFieldPrefab: {fileID: 1528912423495812, guid: 8137e749be0990542ad355d39e286943,
@@ -549,7 +551,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2823db4786e84de479378ae71069190c, type: 3}
-  m_Color: {r: 0.22352943, g: 0.22352943, b: 0.22352943, a: 0.7411765}
+  m_Color: {r: 0.44310272, g: 0.4316038, b: 0.5, a: 0.20392157}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

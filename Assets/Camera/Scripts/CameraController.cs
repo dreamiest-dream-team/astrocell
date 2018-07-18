@@ -11,8 +11,7 @@ public class CameraController : MonoBehaviour
     public Transform nodes;
 
     private Camera cam;
-
-    private bool mouseOver;
+    
     private bool dragging;
     private Vector3 dragOffset;
 
@@ -23,9 +22,6 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        //Check if the mouse isn't over anything
-        mouseOver = !Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), transform.forward, Mathf.Infinity);
-
         //Handle zooming
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize - zoomSpeed * Input.GetAxis("Mouse ScrollWheel"), minZoom, maxZoom);
 
@@ -38,7 +34,7 @@ public class CameraController : MonoBehaviour
             nodes.position = pos + dragOffset;
         }
 
-        if (Input.GetMouseButtonDown(0) && mouseOver)
+        if (Input.GetMouseButtonDown(2))
         {
             Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
@@ -47,7 +43,7 @@ public class CameraController : MonoBehaviour
             dragOffset = nodes.position - pos;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(2))
         {
             dragging = false;
         }

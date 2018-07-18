@@ -7,7 +7,7 @@ public class ConnectionManager : MonoBehaviour
     public Material lineMat;
 
     private bool creatingConnection;
-    private Vector3 start;
+    private Transform startNode;
     private Vector3 mousePos;
     private Port port;
 
@@ -35,7 +35,7 @@ public class ConnectionManager : MonoBehaviour
         }
 
         port = _port;
-        start = Camera.main.WorldToScreenPoint(_port.transform.position);
+        startNode = _port.transform;
         creatingConnection = true;
     }
 
@@ -43,6 +43,7 @@ public class ConnectionManager : MonoBehaviour
     {
         if (creatingConnection)
         {
+            Vector3 start = Camera.main.WorldToScreenPoint(startNode.position);
             lineMat.SetPass(0);
             GL.LoadOrtho();
             GL.Begin(GL.LINES);

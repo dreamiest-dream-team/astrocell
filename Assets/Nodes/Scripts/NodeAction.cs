@@ -178,7 +178,7 @@ public class NodeAction : MonoBehaviour
         lengthOfConnection += Vector3.Distance(positions[2], positions[3]);
 
         float ups = lengthOfConnection / 2; //units per second
-
+        
         Transform pulse = lr.transform.GetChild(0);
 
         pulse.position = positions[0];
@@ -188,8 +188,10 @@ public class NodeAction : MonoBehaviour
 
         while (point < 4)
         {
-            pulse.position = Vector3.MoveTowards(pulse.position, positions[point], ups * Time.deltaTime);
-            if (pulse.position == positions[point]) point++;
+            Vector3 _offset = positions[point] - lr.GetPosition(point);
+
+            pulse.position = Vector3.MoveTowards(pulse.position, positions[point] - _offset, ups * Time.deltaTime);
+            if (pulse.position == positions[point] - _offset) point++;
             yield return null;
         }
 

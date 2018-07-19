@@ -68,7 +68,6 @@ public class Node : MonoBehaviour
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = transform.position.z;
-
             transform.position = pos + dragOffset;
         }
 
@@ -76,13 +75,14 @@ public class Node : MonoBehaviour
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
-
             dragging = true;
             dragOffset = transform.position - pos;
         }
         
         if (Input.GetMouseButtonUp(0) || !mode.edit)
+        {
             dragging = false;
+        }
     }
 
     private void OnMouseEnter()

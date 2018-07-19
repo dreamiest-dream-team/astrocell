@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 using TMPro;
 
 public class NodeAction : MonoBehaviour
 {
-    public List<Item> items;
-    public string type;
-    public TextMeshPro progressText;
+    [SerializeField]
+    private string type;
+    [SerializeField]
+    private TextMeshPro progressText;
 
+    private List<Item> items;
     bool inProgress = false;
 
     private ModeController mode;
@@ -24,7 +26,9 @@ public class NodeAction : MonoBehaviour
     private void Update()
     {
         if (!mode.edit)
+        {
             CheckReady();
+        }
     }
 
     public void RecieveItem(Item item)

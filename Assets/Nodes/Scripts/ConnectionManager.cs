@@ -8,9 +8,8 @@ public class ConnectionManager : MonoBehaviour
     private Material lineMat;
 
     private bool creatingConnection;
-    private Transform startNode;
     private Vector3 mousePos;
-    private Port port;
+    private Port startPort;
 
     private ModeController mode;
 
@@ -29,26 +28,25 @@ public class ConnectionManager : MonoBehaviour
         }
     }
 
-    public void Connect(Port _port)
+    public void Connect(Port port)
     {
         if (creatingConnection)
         {
-            if (_port.transform.parent.GetComponentInChildren<LineRenderer>() != port.transform.parent.GetComponentInChildren<LineRenderer>()
-                && _port.transform.parent.parent != port.transform.parent.parent && _port.type == port.type)
+            if (port.transform.parent.GetComponentInChildren<LineRenderer>() != startPort.transform.parent.GetComponentInChildren<LineRenderer>()
+                && port.transform.parent.parent != startPort.transform.parent.parent && port.type == startPort.type)
             {
-                if (_port.connection != null) _port.connection.connection = null;
                 if (port.connection != null) port.connection.connection = null;
+                if (startPort.connection != null) startPort.connection.connection = null;
 
-                _port.connection = port;
-                port.connection = _port;
+                port.connection = startPort;
+                startPort.connection = port;
             }
 
             creatingConnection = false;
             return;
         }
 
-        port = _port;
-        startNode = _port.transform;
+        startPort = port;
         creatingConnection = true;
     }
 
@@ -56,7 +54,7 @@ public class ConnectionManager : MonoBehaviour
     {
         if (creatingConnection && mode.edit)
         {
-            Vector3 start = Camera.main.WorldToScreenPoint(startNode.position);
+            Vector3 start = Camera.main.WorldToScreenPoint(startPort.transform.position);
             lineMat.SetPass(0);
             GL.LoadOrtho();
             GL.Begin(GL.LINES);

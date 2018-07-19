@@ -7,28 +7,23 @@ using TMPro;
 
 public class AddNodeMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject entryPrefab;
-    public Transform entries;
+    [SerializeField]
+    private GameObject entryPrefab;
+    [SerializeField]
+    private Transform entries;
 
-    public Transform instantiatedNodes;
+    [SerializeField]
+    private Transform instantiatedNodes;
 
-    public Vector3 offset;
-    public Vector3 menuMouseOffset;
+    [SerializeField]
+    private Vector3 offset;
+    [SerializeField]
+    private Vector3 menuMouseOffset;
 
     private Transform curEntry;
     private bool over;
 
     private ModeController mode;
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        over = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        over = false;
-    }
 
     private void Start()
     {
@@ -105,5 +100,15 @@ public class AddNodeMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerE
         {
             Destroy(child.gameObject);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        over = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        over = false;
     }
 }

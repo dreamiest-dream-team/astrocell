@@ -10,17 +10,21 @@ public class NodeAction : MonoBehaviour
     public string type;
     public TextMeshPro progressText;
 
-    private bool inProgress = false;
+    bool inProgress = false;
+
+    private ModeController mode;
 
     private void Start()
     {
+        mode = FindObjectOfType<ModeController>();
         items = new List<Item>();
         progressText.text = "Waiting...";
     }
 
     private void Update()
     {
-        CheckReady();
+        if (!mode.edit)
+            CheckReady();
     }
 
     public void RecieveItem(Item item)
@@ -100,13 +104,18 @@ public class NodeAction : MonoBehaviour
 
         while (elapsed < maxElapsed)
         {
+            if (mode.edit)
+                elapsed = maxElapsed;
+
             elapsed += Time.deltaTime;
             progressText.text = Mathf.Round((elapsed / maxElapsed) * 100) + "%";
             yield return null;
         }
 
         progressText.text = "Waiting...";
-        ExecuteTask();
+
+        if (!mode.edit)
+            ExecuteTask();
 
         yield return new WaitForSeconds(1);
 
@@ -152,7 +161,7 @@ public class NodeAction : MonoBehaviour
 
     IEnumerator Send(Item[] sending, Port port)
     {
-        if (port != null && port.connection != null)
+        if (port != null && port.connection != null && !mode.edit)
         {
             StartCoroutine(SendPulseAnimation(port));
 
@@ -212,6 +221,9 @@ public class NodeAction : MonoBehaviour
                     point = 4;
                 }
             }
+
+            if (mode.edit)
+                point = 4;
 
             elapsed += Time.deltaTime;
             yield return null;

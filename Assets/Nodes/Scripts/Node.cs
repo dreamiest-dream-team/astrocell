@@ -5,27 +5,38 @@ using TMPro;
 
 public class Node : MonoBehaviour
 {
-    public string name;
-    public Field[] inputs;
-    public Field[] outputs;
+    [SerializeField]
+    private string name;
+    [SerializeField]
+    private Field[] inputs;
+    [SerializeField]
+    private Field[] outputs;
 
     [Space]
 
-    public GameObject inputFieldPrefab;
-    public GameObject outputFieldPrefab;
-    public Transform fieldParent;
+    [SerializeField]
+    private GameObject inputFieldPrefab;
+    [SerializeField]
+    private GameObject outputFieldPrefab;
+    [SerializeField]
+    private Transform fieldParent;
 
     [Space]
 
-    public float fieldSpacing;
-    public float fieldOffset;
+    [SerializeField]
+    private float fieldSpacing;
+    [SerializeField]
+    private float fieldOffset;
 
     private bool mouseOver;
     private bool dragging;
     private Vector3 dragOffset;
+    
+    private ModeController mode;
 
     private void Start()
     {
+        mode = FindObjectOfType<ModeController>();
         GetComponentInChildren<TextMeshPro>().text = name;
 
         for (int i = 0; i < inputs.Length; i++)
@@ -70,10 +81,8 @@ public class Node : MonoBehaviour
             dragOffset = transform.position - pos;
         }
         
-        if (Input.GetMouseButtonUp(0))
-        {
+        if (Input.GetMouseButtonUp(0) || !mode.edit)
             dragging = false;
-        }
     }
 
     private void OnMouseEnter()

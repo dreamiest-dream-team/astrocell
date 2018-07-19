@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class ConnectionManager : MonoBehaviour
 {
-    public Material lineMat;
+    [SerializeField]
+    private Material lineMat;
 
     private bool creatingConnection;
     private Transform startNode;
     private Vector3 mousePos;
     private Port port;
 
+    private ModeController mode;
+
+    private void Start()
+    {
+        mode = FindObjectOfType<ModeController>();
+    }
+
     private void Update()
     {
         mousePos = Input.mousePosition;
+
+        if (!mode.edit)
+        {
+            creatingConnection = false;
+        }
     }
 
     public void Connect(Port _port)
@@ -41,7 +54,7 @@ public class ConnectionManager : MonoBehaviour
 
     private void OnPostRender()
     {
-        if (creatingConnection)
+        if (creatingConnection && mode.edit)
         {
             Vector3 start = Camera.main.WorldToScreenPoint(startNode.position);
             lineMat.SetPass(0);

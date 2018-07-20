@@ -22,7 +22,7 @@ public class ConnectionManager : MonoBehaviour
     {
         mousePos = Input.mousePosition;
 
-        if (!mode.edit)
+        if (creatingConnection && (!mode.edit || Input.GetKeyDown(KeyCode.Escape)))
         {
             creatingConnection = false;
         }

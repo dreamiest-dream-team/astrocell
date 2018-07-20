@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Port : MonoBehaviour
 {
-    //[HideInInspector]
+    [HideInInspector]
     public Port connection;
     [HideInInspector]
     public string type;

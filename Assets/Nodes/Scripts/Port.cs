@@ -53,7 +53,7 @@ public class Port : MonoBehaviour
         }
 
         Vector3 zOffset = new Vector3(0, 0, 0.1f);
-        Vector3 initialOffset = new Vector3(1, 0, 0);
+        Vector3 initialOffset = new Vector3(2, 0, 0);
 
         if (connection.transform.position.x < transform.position.x) initialOffset *= -1;
 

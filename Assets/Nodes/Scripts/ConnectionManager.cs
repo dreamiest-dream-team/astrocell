@@ -8,7 +8,6 @@ public class ConnectionManager : MonoBehaviour
     private Material lineMat;
 
     private bool creatingConnection;
-    private Vector3 mousePos;
     private Port startPort;
 
     private ModeController mode;
@@ -20,8 +19,6 @@ public class ConnectionManager : MonoBehaviour
 
     private void Update()
     {
-        mousePos = Input.mousePosition;
-
         if (creatingConnection && (!mode.edit || Input.GetKeyDown(KeyCode.Escape)))
         {
             creatingConnection = false;
@@ -60,7 +57,7 @@ public class ConnectionManager : MonoBehaviour
             GL.Begin(GL.LINES);
             GL.Color(new Color(lineMat.color.r, lineMat.color.g, lineMat.color.b, lineMat.color.a));
             GL.Vertex(new Vector3(start.x / Screen.width, start.y / Screen.height, 0));
-            GL.Vertex(new Vector3(mousePos.x / Screen.width, mousePos.y / Screen.height, 0));
+            GL.Vertex(new Vector3(Input.mousePosition.x / Screen.width, Input.mousePosition.y / Screen.height, 0));
             GL.End();
         }
     }

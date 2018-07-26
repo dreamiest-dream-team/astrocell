@@ -24,6 +24,8 @@ public class OrganDisplay : MonoBehaviour
 
 	private void UpdateCostText()
 	{
-		costText.text = "Organ Cost: $" + cost;
+		string str = string.Format("{0:n0}", cost);
+
+		costText.text = "Organ Cost: $" + str;
 	}
 }

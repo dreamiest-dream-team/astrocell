@@ -5,6 +5,11 @@ using UnityEngine;
 public class NodeSelectable : MonoBehaviour
 {
     [SerializeField]
+    private float cost = 100;
+
+    [Space]
+
+    [SerializeField]
     private GameObject background_selected;
 
     [Space]
@@ -14,6 +19,11 @@ public class NodeSelectable : MonoBehaviour
 
     private bool selected = false;
     private bool mouseOver;
+
+    private void Start()
+    {
+        FindObjectOfType<OrganDisplay>().UpdateCost(cost);
+    }
 
     private void Update()
     {
@@ -41,6 +51,7 @@ public class NodeSelectable : MonoBehaviour
         {
             if (deleteable && Input.GetKeyDown(KeyCode.Delete))
             {
+                FindObjectOfType<OrganDisplay>().UpdateCost(-cost);
                 Destroy(gameObject);
             }
         }

@@ -20,11 +20,6 @@ public class HubManager : MonoBehaviour
 	private void Start()
 	{
 		organism = new Organism();
-
-		//Testing purposes
-		organism.AddOrganelle(new Organelle());
-		organism.AddOrganelle(new Organelle());
-
 		Display();
 	}
 
@@ -46,7 +41,15 @@ public class HubManager : MonoBehaviour
 			go.transform.SetParent(transform);
 			go.transform.localPosition = new Vector3(0, offset * i + startY, 0);
 
+			organelleGOs.Add(go);
+
 			go.GetComponentInChildren<TextMeshProUGUI>().text = "ID: " + organelles[i].id;
 		}
+	}
+
+	public void NewOrganelle()
+	{
+		organism.AddOrganelle(new Organelle());
+		Display();
 	}
 }

@@ -52,4 +52,12 @@ public class HubManager : MonoBehaviour
 		organism.AddOrganelle(new Organelle());
 		Display();
 	}
+
+	public void RemoveOrganelle(GameObject organelle)
+	{
+		int i = organelleGOs.FindIndex(o => o == organelle);
+		organism.RemoveOrganelle(i);
+
+		Display();
+	}
 }

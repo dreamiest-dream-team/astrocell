@@ -15,9 +15,9 @@ public class Organism
 		organelles.Add(organelle);
 	}
 
-	public void RemoveOrganelle(Organelle organelle)
+	public void RemoveOrganelle(int index)
 	{
-		organelles.Remove(organelle);
+		organelles.RemoveAt(index);
 	}
 
 	public List<Organelle> GetOrganelles()

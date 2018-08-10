@@ -6,4 +6,6 @@ public class Organelle
 {
 	public string name;
 	public int id;
+	public float cost;
+	public SerializedNode[] nodes;
 }

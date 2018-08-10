@@ -5,6 +5,10 @@ using TMPro;
 
 public class Node : MonoBehaviour
 {
+    public string UID;
+
+    [Space]
+    
     [SerializeField]
     private string name;
     [SerializeField]

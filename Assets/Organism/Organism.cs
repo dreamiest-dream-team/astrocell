@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Organism
+public static class Organism
 {
-	private List<Organelle> organelles = new List<Organelle>();
-	private int curId = 0;
+	private static List<Organelle> organelles = new List<Organelle>();
+	private static int curId = 0;
 
-	public void AddOrganelle(Organelle organelle)
+	public static Organelle editing;
+
+	public static void AddOrganelle(Organelle organelle)
 	{
 		organelle.id = curId;
 		curId++;
@@ -15,12 +17,12 @@ public class Organism
 		organelles.Add(organelle);
 	}
 
-	public void RemoveOrganelle(int index)
+	public static void RemoveOrganelle(int index)
 	{
 		organelles.RemoveAt(index);
 	}
 
-	public List<Organelle> GetOrganelles()
+	public static List<Organelle> GetOrganelles()
 	{
 		return organelles;
 	}

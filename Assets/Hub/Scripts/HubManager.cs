@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class HubManager : MonoBehaviour
@@ -15,11 +16,8 @@ public class HubManager : MonoBehaviour
 
 	private List<GameObject> organelleGOs = new List<GameObject>();
 
-	private Organism organism;
-
 	private void Start()
 	{
-		organism = new Organism();
 		Display();
 	}
 
@@ -32,7 +30,7 @@ public class HubManager : MonoBehaviour
 
 		organelleGOs.Clear();
 
-		List<Organelle> organelles = organism.GetOrganelles();
+		List<Organelle> organelles = Organism.GetOrganelles();
 
 		for (int i = 0; i < organelles.Count; i++)
 		{
@@ -49,15 +47,27 @@ public class HubManager : MonoBehaviour
 
 	public void NewOrganelle()
 	{
-		organism.AddOrganelle(new Organelle());
+		Organelle o = new Organelle();
+		o.nodes = new SerializedNode[] {};
+
+		Organism.AddOrganelle(o);
 		Display();
 	}
 
 	public void RemoveOrganelle(GameObject organelle)
 	{
 		int i = organelleGOs.FindIndex(o => o == organelle);
-		organism.RemoveOrganelle(i);
+		Organism.RemoveOrganelle(i);
 
 		Display();
+	}
+
+	public void Edit(GameObject organelle)
+	{
+		int i = organelleGOs.FindIndex(o => o == organelle);
+
+		Organism.editing = Organism.GetOrganelles()[i];
+
+		SceneManager.LoadScene(1); // 1 = editor
 	}
 }

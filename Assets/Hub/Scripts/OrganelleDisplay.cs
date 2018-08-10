@@ -45,4 +45,11 @@ public class OrganelleDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         mouseOver = false;
     }
+
+    public void Edit()
+    {
+        HubManager manager = GetComponentInParent<HubManager>();
+
+        manager.Edit(gameObject);
+    }
 }

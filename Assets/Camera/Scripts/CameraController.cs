@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
 	public float maxZoom;
 
 	public RectTransform background;
-
 	public Transform nodes;
 
 	private Camera cam;

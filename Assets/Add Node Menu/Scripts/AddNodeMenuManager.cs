@@ -30,18 +30,20 @@ public class AddNodeMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerE
 		mode = FindObjectOfType<ModeController>();
 	}
 
-	private void Update()
-	{
-		if (Input.GetMouseButtonUp(1))
-		{
-			if (!CameraController.disableMenu)
-			{
+	private void Update() {
+		if (Input.GetMouseButtonUp(1)) {
+			if (!CameraController.disableMenu) {
 				transform.position = Input.mousePosition + menuMouseOffset;
 
 				OpenMenu();
 			} else {
 				CameraController.disableMenu = false;
 			}
+		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			CloseMenu();
 		}
 
 		if (Input.GetMouseButtonDown(0) && !over)

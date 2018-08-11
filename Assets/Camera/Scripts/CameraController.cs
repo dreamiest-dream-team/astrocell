@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+	public float parallax;
 	public float zoomSpeed;
 	public float minZoom;
 	public float maxZoom;
 
+	public RectTransform background;
+
 	public Transform nodes;
 
 	private Camera cam;
-	
+
+	public static bool disableMenu = false;
+	public Vector3 posCompare;
+
 	private bool dragging;
-	private Vector3 dragOffset;
+	private Vector3 dragOffsetBackground;
+	private Vector3 dragOffsetNodes;
 
 	private void Start()
 	{
@@ -31,20 +38,27 @@ public class CameraController : MonoBehaviour
 			Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
 			pos.z = nodes.position.z;
 
-			nodes.position = pos + dragOffset;
+			nodes.position = pos + dragOffsetNodes;
+			background.position = (pos / parallax) * (cam.orthographicSize / parallax) + dragOffsetBackground;
 		}
 
-		if (Input.GetMouseButtonDown(2))
+		if (Input.GetMouseButtonDown(1))
 		{
 			Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
 			pos.z = 0;
 
 			dragging = true;
-			dragOffset = nodes.position - pos;
+			dragOffsetNodes = nodes.position - pos;
+			dragOffsetBackground = background.position - (pos / parallax) * (cam.orthographicSize / parallax);
+
+			posCompare = cam.ScreenToWorldPoint(Input.mousePosition);
+			disableMenu = true;
 		}
 
-		if (Input.GetMouseButtonUp(2))
+		if (Input.GetMouseButtonUp(1))
 		{
+			if (posCompare == cam.ScreenToWorldPoint(Input.mousePosition)) disableMenu = false;
+
 			dragging = false;
 		}
 	}

@@ -5,51 +5,51 @@ using UnityEngine.EventSystems;
 
 public class OrganelleDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    private GameObject background_selected;
+	[SerializeField]
+	private GameObject background_selected;
 
-    private bool selected = false;
-    private bool mouseOver;
+	private bool selected = false;
+	private bool mouseOver;
 
 	private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            selected = mouseOver;
-        }
+	{
+		if (Input.GetMouseButtonDown(0))
+		{
+			selected = mouseOver;
+		}
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            selected = false;
-        }
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			selected = false;
+		}
 
-        background_selected.SetActive(selected);
+		background_selected.SetActive(selected);
 
-        if (selected)
-        {
-            if (Input.GetKeyDown(KeyCode.Delete))
-            {
+		if (selected)
+		{
+			if (Input.GetKeyDown(KeyCode.Delete))
+			{
 				HubManager manager = GetComponentInParent<HubManager>();
 
 				manager.RemoveOrganelle(gameObject);
-            }
-        }
-    }
+			}
+		}
+	}
 
 	public void OnPointerEnter(PointerEventData eventData)
-    {
-        mouseOver = true;
-    }
+	{
+		mouseOver = true;
+	}
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        mouseOver = false;
-    }
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		mouseOver = false;
+	}
 
-    public void Edit()
-    {
-        HubManager manager = GetComponentInParent<HubManager>();
+	public void Edit()
+	{
+		HubManager manager = GetComponentInParent<HubManager>();
 
-        manager.Edit(gameObject);
-    }
+		manager.Edit(gameObject);
+	}
 }

@@ -7,108 +7,108 @@ using TMPro;
 
 public class AddNodeMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    private GameObject entryPrefab;
-    [SerializeField]
-    private Transform entries;
+	[SerializeField]
+	private GameObject entryPrefab;
+	[SerializeField]
+	private Transform entries;
 
-    [SerializeField]
-    private Transform instantiatedNodes;
+	[SerializeField]
+	private Transform instantiatedNodes;
 
-    [SerializeField]
-    private Vector3 offset;
-    [SerializeField]
-    private Vector3 menuMouseOffset;
+	[SerializeField]
+	private Vector3 offset;
+	[SerializeField]
+	private Vector3 menuMouseOffset;
 
-    private Transform curEntry;
-    private bool over;
+	private Transform curEntry;
+	private bool over;
 
-    private ModeController mode;
+	private ModeController mode;
 
-    private void Start()
-    {
-        mode = FindObjectOfType<ModeController>();
-    }
+	private void Start()
+	{
+		mode = FindObjectOfType<ModeController>();
+	}
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            transform.position = Input.mousePosition + menuMouseOffset;
+	private void Update()
+	{
+		if (Input.GetMouseButtonDown(1))
+		{
+			transform.position = Input.mousePosition + menuMouseOffset;
 
-            OpenMenu();
-        }
+			OpenMenu();
+		}
 
-        if (Input.GetMouseButtonDown(0) && !over)
-        {
-            CloseMenu();
-        }
+		if (Input.GetMouseButtonDown(0) && !over)
+		{
+			CloseMenu();
+		}
 
-        if (!mode.edit)
-        {
-            CloseMenu();
-        }
-    }
+		if (!mode.edit)
+		{
+			CloseMenu();
+		}
+	}
 
-    private void GenerateMenus()
-    {
-        if (curEntry.GetComponent<Node>() != null)
-        {
-            CreateNode();
-            return;
-        }
+	private void GenerateMenus()
+	{
+		if (curEntry.GetComponent<Node>() != null)
+		{
+			CreateNode();
+			return;
+		}
 
-        CloseMenu();
+		CloseMenu();
 
-        int i = 0;
-        foreach (Transform child in curEntry)
-        {
-            GameObject go = Instantiate(entryPrefab, transform.position - offset * i, Quaternion.identity, transform);
-            go.GetComponentInChildren<TextMeshProUGUI>().text = child.name;
-            go.GetComponentInChildren<Button>().onClick.AddListener(delegate { SetCurEntry(child); });
-            i++;
-        }
-    }
+		int i = 0;
+		foreach (Transform child in curEntry)
+		{
+			GameObject go = Instantiate(entryPrefab, transform.position - offset * i, Quaternion.identity, transform);
+			go.GetComponentInChildren<TextMeshProUGUI>().text = child.name;
+			go.GetComponentInChildren<Button>().onClick.AddListener(delegate { SetCurEntry(child); });
+			i++;
+		}
+	}
 
-    public void SetCurEntry(Transform entry)
-    {
-        curEntry = entry;
-        GenerateMenus();
-    }
+	public void SetCurEntry(Transform entry)
+	{
+		curEntry = entry;
+		GenerateMenus();
+	}
 
-    private void CreateNode()
-    {
-        GameObject go = Instantiate(curEntry.gameObject, Vector3.zero, Quaternion.identity, instantiatedNodes);
+	private void CreateNode()
+	{
+		GameObject go = Instantiate(curEntry.gameObject, Vector3.zero, Quaternion.identity, instantiatedNodes);
 
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        pos.z = 0;
+		Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		pos.z = 0;
 
-        go.transform.localPosition = pos;
+		go.transform.localPosition = pos;
 
-        CloseMenu();
-    }
+		CloseMenu();
+	}
 
-    public void OpenMenu()
-    {
-        curEntry = entries;
-        GenerateMenus();
-    }
+	public void OpenMenu()
+	{
+		curEntry = entries;
+		GenerateMenus();
+	}
 
-    public void CloseMenu()
-    {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-    }
+	public void CloseMenu()
+	{
+		foreach (Transform child in transform)
+		{
+			Destroy(child.gameObject);
+		}
+	}
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        over = true;
-    }
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		over = true;
+	}
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        over = false;
-    }
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		over = false;
+	}
 }

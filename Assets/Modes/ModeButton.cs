@@ -5,16 +5,16 @@ using UnityEngine.EventSystems;
 
 public class ModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [HideInInspector]
-    public bool mouseOver;
-    
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        mouseOver = true;
-    }
+	[HideInInspector]
+	public bool mouseOver;
+	
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		mouseOver = true;
+	}
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        mouseOver = false;
-    }
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		mouseOver = false;
+	}
 }

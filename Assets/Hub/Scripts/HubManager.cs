@@ -14,6 +14,8 @@ public class HubManager : MonoBehaviour
 	[SerializeField]
 	private float startY;
 
+	private float scrollOffset = 0f;
+
 	private List<GameObject> organelleGOs = new List<GameObject>();
 
 	private void Start()
@@ -37,7 +39,7 @@ public class HubManager : MonoBehaviour
 			GameObject go = Instantiate(organelleUIPrefab);
 
 			go.transform.SetParent(transform);
-			go.transform.localPosition = new Vector3(0, offset * i + startY, 0);
+			go.transform.localPosition = new Vector3(0, offset * i + scrollOffset + startY, 0);
 
 			organelleGOs.Add(go);
 
@@ -46,6 +48,18 @@ public class HubManager : MonoBehaviour
 			texts[0].text = string.Format("${0:n0}", organelles[i].cost);
 			texts[1].text = organelles[i].name;
 		}
+	}
+
+	public void Scroll(float amount)
+	{
+		scrollOffset += amount;
+
+		if (scrollOffset < 0)
+			scrollOffset = 0;
+
+		print(scrollOffset);
+
+		Display();
 	}
 
 	public void NewOrganelle()

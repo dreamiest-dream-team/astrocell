@@ -57,6 +57,12 @@ public class Port : MonoBehaviour
 		Vector3 zOffset = new Vector3(0, 0, 0.1f);
 		Vector3 initialOffset = new Vector3(2, 0, 0);
 
+		if (Vector3.Distance(transform.position, connection.transform.position) < 10)
+		{
+			zOffset = Vector3.zero;
+			initialOffset = Vector3.zero;
+		}
+
 		if (connection.transform.position.x < transform.position.x) initialOffset *= -1;
 
 		line.SetPosition(0, transform.position + zOffset);

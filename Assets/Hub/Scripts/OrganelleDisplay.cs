@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class OrganelleDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -10,6 +12,15 @@ public class OrganelleDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 	private bool selected = false;
 	private bool mouseOver;
+
+	private HubManager manager;
+	private TMP_InputField field;
+
+	private void Start()
+	{
+		manager = GetComponentInParent<HubManager>();
+		field = GetComponentInChildren<TMP_InputField>();
+	}
 
 	private void Update()
 	{
@@ -29,8 +40,6 @@ public class OrganelleDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
 		{
 			if (Input.GetKeyDown(KeyCode.Delete))
 			{
-				HubManager manager = GetComponentInParent<HubManager>();
-
 				manager.RemoveOrganelle(gameObject);
 			}
 		}
@@ -48,8 +57,20 @@ public class OrganelleDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 	public void Edit()
 	{
-		HubManager manager = GetComponentInParent<HubManager>();
-
 		manager.Edit(gameObject);
+	}
+
+	public void EditName()
+	{
+		string name = field.text.Trim();
+
+		if (name.Length == 0)
+		{
+			name = "MyOrganelle";
+		}
+
+		field.text = name;
+
+		manager.EditName(name, gameObject);
 	}
 }

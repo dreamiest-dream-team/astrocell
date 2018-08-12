@@ -43,8 +43,8 @@ public class HubManager : MonoBehaviour
 
 			TextMeshProUGUI[] texts = go.GetComponentsInChildren<TextMeshProUGUI>();
 
-			texts[0].text = organelles[i].name;
-			texts[1].text = string.Format("${0:n0}", organelles[i].cost);
+			texts[0].text = string.Format("${0:n0}", organelles[i].cost);
+			texts[1].text = organelles[i].name;
 		}
 	}
 
@@ -72,5 +72,12 @@ public class HubManager : MonoBehaviour
 		Organism.editing = Organism.GetOrganelles()[i];
 
 		SceneManager.LoadScene(1); // 1 = editor
+	}
+
+	public void EditName(string name, GameObject organelle)
+	{
+		int i = organelleGOs.FindIndex(o => o == organelle);
+
+		Organism.GetOrganelles()[i].name = name;
 	}
 }

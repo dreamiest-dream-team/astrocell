@@ -34,10 +34,8 @@ public class NodeSelectable : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl)))
 		{
-			if (!selected)
-			{
-				selected = mouseOver;
-			}
+			if (mouseOver)
+				selected = !selected;
 		}
 
 		if (Input.GetKeyDown(KeyCode.Escape))

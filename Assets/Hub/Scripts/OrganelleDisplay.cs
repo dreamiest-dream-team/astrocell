@@ -24,9 +24,15 @@ public class OrganelleDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl)))
 		{
 			selected = mouseOver;
+		}
+
+		if (Input.GetMouseButtonDown(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl)))
+		{
+			if (mouseOver)
+				selected = !selected;
 		}
 
 		if (Input.GetKeyDown(KeyCode.Escape))

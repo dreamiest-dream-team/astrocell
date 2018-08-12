@@ -8,6 +8,8 @@ public class Port : MonoBehaviour
 	public Port connection;
 	[HideInInspector]
 	public string type;
+	[HideInInspector]
+	public string name;
 
 	private LineRenderer line;
 	private ConnectionManager manager;

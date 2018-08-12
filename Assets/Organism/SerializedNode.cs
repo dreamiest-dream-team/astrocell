@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SerializedNode 
 {
-	public string id;
+	public string type;
+	public int id;
 	public Vector3 position;
+	public List<SerializedConnection> connections = new List<SerializedConnection>();
 }

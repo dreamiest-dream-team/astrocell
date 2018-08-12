@@ -11,10 +11,9 @@ public class Node : MonoBehaviour
 	
 	[SerializeField]
 	private string name;
-	[SerializeField]
-	private Field[] inputs;
-	[SerializeField]
-	private Field[] outputs;
+
+	public Field[] inputs;
+	public Field[] outputs;
 
 	[Space]
 
@@ -38,7 +37,7 @@ public class Node : MonoBehaviour
 	
 	private ModeController mode;
 
-	private void Start()
+	private void Awake()
 	{
 		mode = FindObjectOfType<ModeController>();
 		GetComponentInChildren<TextMeshPro>().text = name;
@@ -52,6 +51,7 @@ public class Node : MonoBehaviour
 			if (t == " ()") t = "";
 			go.GetComponentInChildren<TextMeshPro>().text = inputs[i].name + t;
 			go.GetComponentInChildren<Port>().type = inputs[i].type;
+			go.GetComponentInChildren<Port>().name = inputs[i].name;
 		}
 
 		for (int i = 0; i < outputs.Length; i++)
@@ -63,6 +63,7 @@ public class Node : MonoBehaviour
 			if (t == "() ") t = "";
 			go.GetComponentInChildren<TextMeshPro>().text = t + outputs[i].name;
 			go.GetComponentInChildren<Port>().type = outputs[i].type;
+			go.GetComponentInChildren<Port>().name = outputs[i].name;
 		}
 	}
 

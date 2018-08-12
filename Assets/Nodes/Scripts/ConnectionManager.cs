@@ -29,8 +29,10 @@ public class ConnectionManager : MonoBehaviour
 	{
 		if (creatingConnection)
 		{
-			if (port.transform.parent.GetComponentInChildren<LineRenderer>() != startPort.transform.parent.GetComponentInChildren<LineRenderer>()
-				&& port.transform.parent.parent != startPort.transform.parent.parent && port.type == startPort.type)
+            bool a = port.transform.parent.GetComponentInChildren<LineRenderer>() != null;
+            bool b = startPort.transform.parent.GetComponentInChildren<LineRenderer>() != null;
+
+            if (a != b && port.transform.parent.parent != startPort.transform.parent.parent && port.type == startPort.type)
 			{
 				if (port.connection != null) port.connection.connection = null;
 				if (startPort.connection != null) startPort.connection.connection = null;

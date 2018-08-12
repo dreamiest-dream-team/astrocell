@@ -27,12 +27,12 @@ public class NodeSelectable : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetMouseButtonDown(0) && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl)))
 		{
 			selected = mouseOver;
 		}
 
-		if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetMouseButtonDown(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl)))
 		{
 			if (!selected)
 			{

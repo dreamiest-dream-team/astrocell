@@ -1840,6 +1840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costText: {fileID: 472251554}
+  cost: 1000
 --- !u!1 &1484373401
 GameObject:
   m_ObjectHideFlags: 0

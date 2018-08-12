@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369a469500b2e444d849ffa38632fdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UID: 
   name: Import
   inputs: []
   outputs:
@@ -328,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260bad1e50bb418c7389c2b9ca839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 100
   background_selected: {fileID: 1690602854005018}
   deleteable: 1
 --- !u!114 &114558124500930864
@@ -496,7 +498,7 @@ MonoBehaviour:
   m_fontSizeMin: 10
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 513
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -538,7 +540,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}

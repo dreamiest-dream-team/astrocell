@@ -57,13 +57,16 @@ public class HubManager : MonoBehaviour
 		if (scrollOffset < 0)
 			scrollOffset = 0;
 
-		print(scrollOffset);
+		if (scrollOffset > organelleGOs.ToArray().Length * Mathf.Abs(amount))
+			scrollOffset = organelleGOs.ToArray().Length * Mathf.Abs(amount);
 
 		Display();
 	}
 
 	public void NewOrganelle()
 	{
+		if (organelleGOs.ToArray().Length + 1 > 19) return;
+
 		Organelle o = new Organelle();
 		o.nodes = new SerializedNode[] {};
 

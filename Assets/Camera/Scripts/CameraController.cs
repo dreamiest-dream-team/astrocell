@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
 			pos.z = nodes.position.z;
 
 			nodes.position = pos + dragOffsetNodes;
-			background.position = (pos / parallax) * (cam.orthographicSize / parallax) + dragOffsetBackground;
+			//background.position = (pos / parallax) * (cam.orthographicSize / parallax) + dragOffsetBackground;
 		}
 
 		if (Input.GetMouseButtonDown(1))
@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour
 
 			dragging = true;
 			dragOffsetNodes = nodes.position - pos;
-			dragOffsetBackground = background.position - (pos / parallax) * (cam.orthographicSize / parallax);
+			//dragOffsetBackground = background.position - (pos / parallax) * (cam.orthographicSize / parallax);
 
 			posCompare = cam.ScreenToWorldPoint(Input.mousePosition);
 			disableMenu = true;

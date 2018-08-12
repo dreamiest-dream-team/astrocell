@@ -1542,7 +1542,7 @@ Prefab:
     - target: {fileID: 114658188480617608, guid: 64c61bbecc70b984dba9359c5fa06206,
         type: 2}
       propertyPath: parallax
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64c61bbecc70b984dba9359c5fa06206, type: 2}

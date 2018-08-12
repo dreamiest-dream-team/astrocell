@@ -36,7 +36,7 @@ public class Port : MonoBehaviour
 		}
 		else
 		{
-			rend.color = new Color(0.4431027f, 0.4316038f, 0.5f, 1);
+			rend.color = new Color(1f, 1f, 1f, 1);
 		}
 
 		if (line == null)

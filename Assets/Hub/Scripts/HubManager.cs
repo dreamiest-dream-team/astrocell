@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -8,11 +9,15 @@ public class HubManager : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject organelleUIPrefab;
+	[SerializeField]
+	private Scrollbar scrollbar;
 
 	[SerializeField]
 	private float offset;
 	[SerializeField]
 	private float startY;
+
+	private RectTransform rect;
 
 	private float scrollOffset = 0f;
 
@@ -20,6 +25,7 @@ public class HubManager : MonoBehaviour
 
 	private void Start()
 	{
+		rect = GetComponent<RectTransform>();
 		Display();
 	}
 
@@ -39,7 +45,7 @@ public class HubManager : MonoBehaviour
 			GameObject go = Instantiate(organelleUIPrefab);
 
 			go.transform.SetParent(transform);
-			go.transform.localPosition = new Vector3(0, offset * i + scrollOffset + startY, 0);
+			go.transform.localPosition = new Vector3(0, offset * i + startY, 0);
 
 			organelleGOs.Add(go);
 
@@ -48,6 +54,13 @@ public class HubManager : MonoBehaviour
 			texts[0].text = string.Format("${0:n0}", organelles[i].cost);
 			texts[1].text = organelles[i].name;
 		}
+	}
+
+	public void Scrollbar()
+	{
+		scrollOffset = scrollbar.value * 950f;
+		
+		UpdateScroll();
 	}
 
 	public void Scroll(float amount)
@@ -60,7 +73,13 @@ public class HubManager : MonoBehaviour
 		if (scrollOffset > organelleGOs.ToArray().Length * Mathf.Abs(amount))
 			scrollOffset = organelleGOs.ToArray().Length * Mathf.Abs(amount);
 
-		Display();
+		scrollbar.value = scrollOffset / 950;
+		UpdateScroll();
+	}
+
+	public void UpdateScroll()
+	{
+		rect.position = new Vector3(469f, 264f + scrollOffset, 0);
 	}
 
 	public void NewOrganelle()

@@ -41,7 +41,10 @@ public class HubManager : MonoBehaviour
 
 			organelleGOs.Add(go);
 
-			go.GetComponentInChildren<TextMeshProUGUI>().text = "ID: " + organelles[i].id;
+			TextMeshProUGUI[] texts = go.GetComponentsInChildren<TextMeshProUGUI>();
+
+			texts[0].text = organelles[i].name;
+			texts[1].text = string.Format("${0:n0}", organelles[i].cost);
 		}
 	}
 

@@ -17,6 +17,8 @@ public class OrganelleSerializer : MonoBehaviour
 
 	public void Serialize()
 	{
+		Organism.editing.cost = FindObjectOfType<OrganDisplay>().cost;
+
 		Node[] nodes = instantiatedNodesParent.GetComponentsInChildren<Node>();
 
 		Organism.editing.nodes = new SerializedNode[nodes.Length];

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Organelle
 {
-	public string name;
+	public string name = "MyOrganelle";
 	public int id;
-	public float cost;
+	public float cost = 1000;
 	public SerializedNode[] nodes;
 }

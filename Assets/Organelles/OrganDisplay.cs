@@ -8,11 +8,11 @@ public class OrganDisplay : MonoBehaviour
 	[SerializeField]
 	private TextMeshProUGUI costText;
 
-	private float cost;
+	[HideInInspector]
+	public float cost = 1000;
 
 	private void Start()
 	{
-		cost = 1000;
 		UpdateCostText();
 	}
 

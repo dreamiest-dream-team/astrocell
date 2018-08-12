@@ -231,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connection: {fileID: 0}
   type: 
+  name: 
 --- !u!114 &114801643895628748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,7 +387,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:

@@ -6,8 +6,11 @@ public static class Organism
 {
 	private static List<Organelle> organelles = new List<Organelle>();
 	private static int curId = 0;
-
 	public static Organelle editing;
+
+	public static int preset;
+	public static float money;
+	public static int eventDifficulty;
 
 	public static void AddOrganelle(Organelle organelle)
 	{

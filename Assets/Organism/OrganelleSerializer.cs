@@ -115,6 +115,6 @@ public class OrganelleSerializer : MonoBehaviour
 	public void Back()
 	{
 		Serialize();
-		SceneManager.LoadScene(0); //hub scene
+		SceneManager.LoadScene(1);
 	}
 }

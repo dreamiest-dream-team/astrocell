@@ -107,7 +107,7 @@ public class HubManager : MonoBehaviour
 
 		Organism.editing = Organism.GetOrganelles()[i];
 
-		SceneManager.LoadScene(1); // 1 = editor
+		SceneManager.LoadScene(2);
 	}
 
 	public void EditName(string name, GameObject organelle)
